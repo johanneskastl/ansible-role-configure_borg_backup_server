@@ -7,3 +7,17 @@
     state: 'present'
     gid: "{{ borg_group_gid }}"
     system: true
+
+- name: "Create user {{ borg_user }}"
+  ansible.builtin.user:
+    name: "{{ borg_user }}"
+    state: 'present'
+    uid: "{{ borg_user_uid }}"
+    group: "{{ borg_user }}"
+    groups: "{{ borg_user }}"
+    password: '!'
+    update_password: 'on_create'
+    home: "{{ borg_home_directory }}"
+    create_home: true
+    shell: '/bin/bash'
+    system: true
