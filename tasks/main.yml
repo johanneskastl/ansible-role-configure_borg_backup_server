@@ -21,3 +21,11 @@
     create_home: true
     shell: '/bin/bash'
     system: true
+
+- name: 'Set permissions on HOME directory for the borg user'
+  ansible.builtin.file:
+    path: "{{ borg_home_directory }}"
+    state: 'directory'
+    owner: "{{ borg_user }}"
+    group: "{{ borg_user }}"
+    mode: '0700'
