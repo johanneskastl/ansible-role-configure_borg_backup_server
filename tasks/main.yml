@@ -37,3 +37,11 @@
     owner: "{{ borg_user }}"
     group: "{{ borg_user }}"
     mode: '0700'
+
+- name: 'Create authorized_keys file for borg user'
+  ansible.posix.authorized_key:
+    user: "{{ borg_user }}"
+    state: 'present'
+    key: "{{ borg_ssh_public_key }}"
+    key_options: 'command="/usr/bin/borg serve --restrict-to-path {{ borg_home_directory }}",restrict'
+    path: "{{ borg_ssh_authorizedkeys_path }}"
