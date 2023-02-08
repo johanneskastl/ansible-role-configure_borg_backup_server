@@ -2,6 +2,7 @@
 # configure_borg_backup_server/defaults/main.yml
 
 borg_user: 'borg'
+borg_user_password: '!'
 borg_user_uid: 888
 borg_group_gid: 888
 borg_home_directory: '/opt/borg/'
