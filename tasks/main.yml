@@ -1,0 +1,9 @@
+---
+# configure_borg_backup_server/tasks/main.yml
+
+- name: "Create group {{ borg_user }}"
+  ansible.builtin.group:
+    name: "{{ borg_user }}"
+    state: 'present'
+    gid: "{{ borg_group_gid }}"
+    system: true
