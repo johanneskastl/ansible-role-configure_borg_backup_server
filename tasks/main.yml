@@ -19,7 +19,7 @@
     update_password: 'on_create'
     home: "{{ borg_home_directory }}"
     create_home: true
-    shell: '/bin/bash'
+    shell: "{{ borg_user_shell }}"
     system: true
 
 - name: 'Set permissions on HOME directory for the borg user'
