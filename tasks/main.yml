@@ -29,3 +29,11 @@
     owner: "{{ borg_user }}"
     group: "{{ borg_user }}"
     mode: '0700'
+
+- name: 'Create .ssh/ folder for the borg user'
+  ansible.builtin.file:
+    path: "{{ borg_home_directory }}/.ssh/"
+    state: 'directory'
+    owner: "{{ borg_user }}"
+    group: "{{ borg_user }}"
+    mode: '0700'
