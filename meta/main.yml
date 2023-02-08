@@ -1,0 +1,34 @@
+galaxy_info:
+  role_name: 'configure_borg_backup_server'
+  namespace: 'johanneskastl'
+  author: 'Johannes Kastl'
+  description: 'Configure a server as a borg backup server, i.e. create a user and configure the authorized_keys for that user'
+  company: 'B1 Systems GmbH'
+
+  license: 'BSD-3-Clause'
+
+  min_ansible_version: '2.12'
+
+  platforms:
+    - name: EL
+      versions:
+        - all
+    - name: Debian
+      versions:
+        - all
+    - name: Fedora
+      versions:
+        - all
+    - name: opensuse
+      versions:
+        - all
+    - name: SLES
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - all
+
+  galaxy_tags: []
+
+dependencies: []
