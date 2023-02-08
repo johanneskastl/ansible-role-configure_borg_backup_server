@@ -5,3 +5,4 @@ borg_user: 'borg'
 borg_user_uid: 888
 borg_group_gid: 888
 borg_home_directory: '/opt/borg/'
+borg_user_authorizedkeys_path: '/opt/borg/.ssh/authorized_keys'
