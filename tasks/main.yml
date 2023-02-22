@@ -45,3 +45,4 @@
     key: "{{ borg_ssh_public_key }}"
     key_options: 'command="/usr/bin/borg serve --restrict-to-path {{ borg_home_directory }}",restrict'
     path: "{{ borg_ssh_authorizedkeys_path }}"
+    manage_dir: "{{ borg_user_authorizedkeys_managedir }}"
