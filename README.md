@@ -20,6 +20,7 @@ Role Variables
 - `borg_group_gid` (string): gid for the newly create group (default: `888`)
 - `borg_home_directory` (string): home directory for the new user (default: `/opt/borg/`)
 - `borg_user_authorizedkeys_path` (string): path to the `authorized_keys` file created by this role (default: `/opt/borg/.ssh/authorized_keys`)
+- `borg_user_authorizedkeys_managedir`: (Boolean) If set to `true`, which is the default value, the directory containing the `authorized_keys` file will be modified to be secure. Set this to `false` if you are using another location that should not be changed to `borg:borg` and permissions of `0700`, e.g. if you keep all user's files in `/etc/ssh/authorized_keys`
 
 Dependencies
 ------------
