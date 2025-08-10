@@ -49,3 +49,31 @@
   loop: "{{ borg_ssh_public_key }}"
   when:
     - borg_ssh_public_key is defined
+
+- name: 'Add public SSH keys from borg_list_of_clients without --append-only'
+  ansible.posix.authorized_key:
+    user: "{{ borg_user }}"
+    state: 'present'
+    key: "{{ item.ssh_pub_key }}"
+    key_options: 'command="/usr/bin/borg serve --restrict-to-path {{ borg_home_directory }}{{ item.name }}/",restrict'
+    path: "{{ borg_ssh_authorizedkeys_path }}"
+    manage_dir: "{{ borg_user_authorizedkeys_managedir }}"
+  loop: "{{ borg_list_of_clients }}"
+  when:
+    - borg_ssh_public_key is undefined
+    - borg_list_of_clients is defined
+    - item.append_only is undefined or not item.append_only | bool
+
+- name: 'Add public SSH keys from borg_list_of_clients with --append-only'
+  ansible.posix.authorized_key:
+    user: "{{ borg_user }}"
+    state: 'present'
+    key: "{{ item.ssh_pub_key }}"
+    key_options: 'command="/usr/bin/borg serve --restrict-to-path {{ borg_home_directory }}{{ item.name }}/ --append-only",restrict'
+    path: "{{ borg_ssh_authorizedkeys_path }}"
+    manage_dir: "{{ borg_user_authorizedkeys_managedir }}"
+  loop: "{{ borg_list_of_clients }}"
+  when:
+    - borg_ssh_public_key is undefined
+    - borg_list_of_clients is defined
+    - item.append_only is defined and item.append_only | bool
