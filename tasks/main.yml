@@ -38,7 +38,7 @@
     group: "{{ borg_user }}"
     mode: '0700'
 
-- name: 'Create authorized_keys file for borg user'
+- name: "Add public SSH keys from borg_ssh_public_key to the borg user's authorized_keys file"
   ansible.posix.authorized_key:
     user: "{{ borg_user }}"
     state: 'present'
@@ -47,3 +47,5 @@
     path: "{{ borg_ssh_authorizedkeys_path }}"
     manage_dir: "{{ borg_user_authorizedkeys_managedir }}"
   loop: "{{ borg_ssh_public_key }}"
+  when:
+    - borg_ssh_public_key is defined
